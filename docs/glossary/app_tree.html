@@ -1,0 +1,521 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQBQ3CV');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="google-site-verification" content="okUst94cAlWSsUsGZTB4xSS4UKTtRV8Nu5XZ9pdd3Aw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>App Component Tree &mdash; lightning 0.6.0dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/icon.svg"/>
+  
+  
+  
+    <link rel="canonical" href="https://github.com/Lightning-AI/lightning/glossary/app_tree.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_paramlinks.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build Configuration" href="build_config/build_config.html" />
+    <link rel="prev" title="Payload" href="../api_reference/generated/lightning_app.storage.payload.Payload.html" />
+  <!-- Google Analytics -->
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/UCity/UCity-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/UCity/UCity-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/UCity/UCity-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/Inconsolata/Inconsolata.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+</head>
+
+<div id="lightning-ai-header"></div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.6.0dev
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to ⚡ Lightning Apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/lightning_apps_intro.html">Lightning Apps in 15 minutes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">App Building Skills</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../levels/basic/index.html">Basic skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levels/intermediate/index.html">Intermediate skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levels/advanced/index.html">Advanced skills</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dag/dag.html">Develop a DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/file_server/file_server.html">Develop a File Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/github_repo_runner/github_repo_runner.html">Develop a Github Repo Script Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/hpo/hpo.html">Develop a HPO Sweeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/model_server_app/model_server_app.html">Develop a Model Server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/add_web_ui/index.html">Add a web user interface (UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/add_web_link.html">Add a web link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/arrange_tabs/index.html">Arrange app tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/build_lightning_app/index.html">Develop a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/build_lightning_component/index.html">Develop a Lightning Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/run_work_once.html">Cache Work run calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core_api/lightning_work/compute.html">Customize your cloud compute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/extend_app.html">Extend an existing app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/build_lightning_component/publish_a_component.html">Publish a Lightning component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/add_server/index.html">Run a server within a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/run_app_on_cloud/index.html">Run an App on the cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/run_work_in_parallel.html">Run work in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/share_app.html">Share an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/share_files_between_components.html">Share files between components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../core_api/lightning_app/index.html">LightningApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core_api/lightning_flow.html">LightningFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core_api/lightning_work/index.html">LightningWork</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Addons API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/components.html">lightning_app.components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/frontend.html">lightning_app.frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/runners.html">lightning_app.runners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/storage.html">lightning_app.storage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">App Components Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_config/build_config.html">Build Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dag.html">DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_loop.html">Event Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_variables.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/add_web_ui/glossary_front_end.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing_components.html">Sharing Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduling.html">Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage/storage.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows/add_web_ui/glossary_ui.html">UI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>App Component Tree</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/glossary/app_tree.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <section id="app-component-tree">
+<span id="id1"></span><h1>App Component Tree<a class="headerlink" href="#app-component-tree" title="Permalink to this headline">¶</a></h1>
+<p><strong>Audience:</strong> Users who want to know how components can be composed with each other.</p>
+<p><strong>Level:</strong> Basic</p>
+<hr class="docutils" />
+<section id="what-is-an-application-component-tree">
+<h2>What is an Application Component Tree?<a class="headerlink" href="#what-is-an-application-component-tree" title="Permalink to this headline">¶</a></h2>
+<p>Components can be nested to form component trees where the LightningFlows are its branches and LightningWorks are its leaves.</p>
+<p>This design enables users to organize and maintain their code with more ease, but more importantly, this helps creating an ecosystem with re-usable components.</p>
+<p>Here’s a basic application with four flows and two works (associated tree structure):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://pl-flash-data.s3.amazonaws.com/assets_lightning/tree.gif"><img alt="Basic App Components" src="https://pl-flash-data.s3.amazonaws.com/assets_lightning/tree.gif" style="width: 100%;" /></a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+<span class="kn">from</span> <span class="nn">lightning.app.testing.helpers</span> <span class="kn">import</span> <span class="n">EmptyFlow</span><span class="p">,</span> <span class="n">EmptyWork</span>
+
+
+<span class="k">class</span> <span class="nc">FlowB</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_d</span> <span class="o">=</span> <span class="n">EmptyFlow</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work_b</span> <span class="o">=</span> <span class="n">EmptyWork</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+
+<span class="k">class</span> <span class="nc">FlowA</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_b</span> <span class="o">=</span> <span class="n">FlowB</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_c</span> <span class="o">=</span> <span class="n">EmptyFlow</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work_a</span> <span class="o">=</span> <span class="n">EmptyWork</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningApp</span><span class="p">(</span><span class="n">FlowA</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>A Lightning app runs all flows into a single process. Its flows coordinate the execution of the works each running in their own independent processes.</p>
+</section>
+<hr class="docutils" />
+<section id="how-do-i-define-my-application-component-tree">
+<h2>How do I define my application component tree?<a class="headerlink" href="#how-do-i-define-my-application-component-tree" title="Permalink to this headline">¶</a></h2>
+<p>In order to define your application component tree, you need create a tree of components and attach them to your root flow.</p>
+<p>You can attach your components in the <strong>__init__</strong> method of a flow.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+
+
+<span class="k">class</span> <span class="nc">RootFlow</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># The `Work` component is attached here.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work</span> <span class="o">=</span> <span class="n">Work</span><span class="p">()</span>
+
+        <span class="c1"># The `NestedFlow` component is attached here.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nested_flow</span> <span class="o">=</span> <span class="n">NestedFlow</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once done, simply add the root flow to a Lightning app as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningApp</span><span class="p">(</span><span class="n">RootFlow</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="is-my-application-component-tree-static">
+<h2>Is my application component tree static?<a class="headerlink" href="#is-my-application-component-tree-static" title="Permalink to this headline">¶</a></h2>
+<p>No, Lightning supports dynamic flows and works.</p>
+<p>You can simply attach your components in the <strong>run</strong> method of a flow using the Python functions <strong>hasattr</strong>, <strong>setattr</strong>, and <strong>getattr</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RootFlow</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;work&quot;</span><span class="p">):</span>
+            <span class="c1"># The `Work` component is attached here.</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;work&quot;</span><span class="p">,</span> <span class="n">Work</span><span class="p">())</span>
+        <span class="c1"># Run the `Work` component.</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;work&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;nested_flow&quot;</span><span class="p">):</span>
+            <span class="c1"># The `NestedFlow` component is attached here.</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;nested_flow&quot;</span><span class="p">,</span> <span class="n">NestedFlow</span><span class="p">())</span>
+        <span class="c1"># Run the `NestedFlow` component.</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;wonested_flowrk&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>But it is usually more readable to use Lightning built-in <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_app.structures</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+
+<span class="k">class</span> <span class="nc">RootFlow</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;work&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">:</span>
+            <span class="c1"># The `Work` component is attached here.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s2">&quot;work&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Work</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s2">&quot;work&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s2">&quot;nested_flow&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">:</span>
+            <span class="c1"># The `NestedFlow` component is attached here.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s2">&quot;nested_flow&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">NestedFlow</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s2">&quot;nested_flow&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="build_config/build_config.html" class="btn btn-neutral float-right" title="Build Configuration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../api_reference/generated/lightning_app.storage.payload.Payload.html" class="btn btn-neutral" title="Payload" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (c) 2021-2022, Lightning-AI et al...
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">App Component Tree</a><ul>
+<li><a class="reference internal" href="#what-is-an-application-component-tree">What is an Application Component Tree?</a></li>
+<li><a class="reference internal" href="#how-do-i-define-my-application-component-tree">How do I define my application component tree?</a></li>
+<li><a class="reference internal" href="#is-my-application-component-tree-static">Is my application component tree static?</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/clipboard.min.js"></script>
+         <script src="../_static/copybutton.js"></script>
+         <script src="../_static/copybutton.js"></script>
+         <script>let toggleHintShow = 'Click to show';</script>
+         <script>let toggleHintHide = 'Click to hide';</script>
+         <script>let toggleOpenOnPrint = 'true';</script>
+         <script src="../_static/togglebutton.js"></script>
+         <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script script type="text/javascript">
+  var collapsedSections = ['App Building Skills', 'Practical Examples', 'Common Workflows', 'Core API Reference', 'Addons API Reference', 'Glossary'];
+</script>
+
+
+
+  <div id="lightning-ai-footer"></div>
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. Read PyTorch Lightning's <a href="https://pytorchlightning.ai/privacy-policy">Privacy Policy</a>.</p>
+    <img class="close-button" src="../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQBQ3CV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </body>
+</html>

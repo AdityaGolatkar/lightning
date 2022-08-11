@@ -1,0 +1,643 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQBQ3CV');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="google-site-verification" content="okUst94cAlWSsUsGZTB4xSS4UKTtRV8Nu5XZ9pdd3Aw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Path &mdash; lightning 0.6.0dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.svg"/>
+  
+  
+  
+    <link rel="canonical" href="https://github.com/Lightning-AI/lightning/api_reference/generated/lightning_app.storage.path.Path.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_paramlinks.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Drive" href="lightning_app.storage.drive.Drive.html" />
+    <link rel="prev" title="lightning_app.storage" href="../storage.html" />
+  <!-- Google Analytics -->
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/UCity/UCity-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/UCity/UCity-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/UCity/UCity-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/Inconsolata/Inconsolata.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+</head>
+
+<div id="lightning-ai-header"></div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.6.0dev
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to ⚡ Lightning Apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/lightning_apps_intro.html">Lightning Apps in 15 minutes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">App Building Skills</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../levels/basic/index.html">Basic skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../levels/intermediate/index.html">Intermediate skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../levels/advanced/index.html">Advanced skills</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/dag/dag.html">Develop a DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/file_server/file_server.html">Develop a File Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/github_repo_runner/github_repo_runner.html">Develop a Github Repo Script Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/hpo/hpo.html">Develop a HPO Sweeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/model_server_app/model_server_app.html">Develop a Model Server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_ui/index.html">Add a web user interface (UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_link.html">Add a web link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/arrange_tabs/index.html">Arrange app tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/build_lightning_app/index.html">Develop a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/build_lightning_component/index.html">Develop a Lightning Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/run_work_once.html">Cache Work run calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_work/compute.html">Customize your cloud compute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/extend_app.html">Extend an existing app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/build_lightning_component/publish_a_component.html">Publish a Lightning component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_server/index.html">Run a server within a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/run_app_on_cloud/index.html">Run an App on the cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/run_work_in_parallel.html">Run work in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/share_app.html">Share an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/share_files_between_components.html">Share files between components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_app/index.html">LightningApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_flow.html">LightningFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_work/index.html">LightningWork</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Addons API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../components.html">lightning_app.components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontend.html">lightning_app.frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runners.html">lightning_app.runners</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../storage.html">lightning_app.storage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/app_tree.html">App Components Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/build_config/build_config.html">Build Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/dag.html">DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/event_loop.html">Event Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/environment_variables.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_ui/glossary_front_end.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/sharing_components.html">Sharing Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/scheduling.html">Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/storage/storage.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_ui/glossary_ui.html">UI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../storage.html">lightning_app.storage</a> &gt;</li>
+        
+      <li>Path</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api_reference/generated/lightning_app.storage.path.Path.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <section id="path">
+<h1>Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lightning_app.storage.path.</span></span><span class="sig-name descname"><span class="pre">Path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L33-L355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.PosixPath</span></code></a></p>
+<p>A drop-in replacement for <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> for all paths in Lightning.</p>
+<p>The Lightning Path works exactly the same as <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> but it also remembers in which LightningWork
+it was created. If the Path gets passed to a different LightningWork, the file or folder can then be easily
+accessed no matter where it is located in the other Work’s filesystem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="lightning_app.storage.path.Path.params.*args"></span><strong>*args</strong><a class="paramlink headerlink reference internal" href="#lightning_app.storage.path.Path.params.*args">¶</a> – Accepts the same arguments as in <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a></p></li>
+<li><p><span class="target" id="lightning_app.storage.path.Path.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#lightning_app.storage.path.Path.params.**kwargs">¶</a> – Accepts the same keyword arguments as in <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>Construct a PurePath from one or several strings and or existing
+PurePath objects.  The strings and path objects are combined so as
+to yield a canonicalized path, which is incorporated into the
+new PurePath object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path._attach_queues">
+<span class="sig-name descname"><span class="pre">_attach_queues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_queue</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L269-L272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path._attach_queues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attaches the queues for communication with the Storage Orchestrator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path._attach_work">
+<span class="sig-name descname"><span class="pre">_attach_work</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">work</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L254-L267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path._attach_work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a LightningWork to this Path.</p>
+<p>The first work to be attached becomes the <cite>origin</cite>, i.e., the Work that is meant to expose the file to other
+Work. Attaching a Work to a Path that already has an <cite>origin</cite> Work will make it a <cite>consumer</cite>. A consumer Work
+is a work that can access the file only by first transferring it via <code class="xref py py-meth docutils literal notranslate"><span class="pre">transfer()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><span class="target" id="lightning_app.storage.path.Path._attach_work.params.work"></span><strong>work</strong><a class="paramlink headerlink reference internal" href="#lightning_app.storage.path.Path._attach_work.params.work">¶</a> (<a class="reference internal" href="../api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a>) – LightningWork to be attached to this Path.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path._from_parts">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_from_parts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_Path__unused</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L45-L76"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path._from_parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>This gets called from the super class in <code class="docutils literal notranslate"><span class="pre">pathlib.Path.__new__</span></code>.</p>
+<p>The Lightning Path overrides this to validate the instantiation in the case parts are passed in individually. In
+such a case we need to validate that all parts have the same <cite>origin</cite> and if not, an error is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path._sanitize">
+<span class="sig-name descname"><span class="pre">_sanitize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L274-L279"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path._sanitize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sanitize this Path so that it can be deep-copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.exists">
+<span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L134-L143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the path exists locally or remotely.</p>
+<p>If the path exists locally, this method immediately returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, otherwise it will make a RPC call
+to the attached origin Work and check if the path exists remotely.
+If you strictly want to check local existence only, use <a class="reference internal" href="#lightning_app.storage.path.Path.exists_local" title="lightning_app.storage.path.Path.exists_local"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists_local()</span></code></a> instead. If you strictly want
+to check existence on the remote (regardless of whether the file exists locally or not), use
+<a class="reference internal" href="#lightning_app.storage.path.Path.exists_remote" title="lightning_app.storage.path.Path.exists_remote"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists_remote()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.exists_local">
+<span class="sig-name descname"><span class="pre">exists_local</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L145-L147"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.exists_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the path exists locally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.exists_remote">
+<span class="sig-name descname"><span class="pre">exists_remote</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L149-L168"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.exists_remote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the path exists remotely on the attached orgin Work.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.10)"><strong>RuntimeError</strong></a> – If the path is not attached to any Work (origin undefined).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L232-L239"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a Path from a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.relative_to">
+<span class="sig-name descname"><span class="pre">relative_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L303-L306"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.relative_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the relative path to another path identified by the passed
+arguments.  If the operation is not possible (because this is not
+a subpath of the other path), raise ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L223-L230"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize this Path to a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.with_name">
+<span class="sig-name descname"><span class="pre">with_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L288-L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.with_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new path with the file name changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.with_suffix">
+<span class="sig-name descname"><span class="pre">with_suffix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/master/../src/lightning_app/storage/path.py#L298-L301"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.with_suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new path with the file suffix changed.  If the path
+has no suffix, add given suffix.  If the given suffix is an empty
+string, remove the suffix from the path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.consumer_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">consumer_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/lightning_app/storage/path.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.consumer_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the LightningWork where this path is being accessed.</p>
+<p>By default, this is the same as the <a class="reference internal" href="#lightning_app.storage.path.Path.origin_name" title="lightning_app.storage.path.Path.origin_name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">origin_name</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.hash">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hash</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/lightning_app/storage/path.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>The hash of this Path uniquely identifies the file path and the associated origin Work.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if the origin is not defined, i.e., this Path did not yet get attached to a LightningWork.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.origin_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">origin_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/lightning_app/storage/path.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.origin_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the LightningWork where this path was first created.</p>
+<p>Attaching a Path to a LightningWork will automatically make it the <cite>origin</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.parent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><span class="pre">lightning_app.storage.path.Path</span></a></em><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/lightning_app/storage/path.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The logical parent of the path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lightning_app.storage.path.Path.parents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><span class="pre">lightning_app.storage.path.Path</span></a><span class="p"><span class="pre">]</span></span></em><a class="reference external" href="https://github.com/Lightning-AI/lightning/blob/lightning_app/storage/path.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lightning_app.storage.path.Path.parents" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sequence of this path’s logical parents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="#lightning_app.storage.path.Path" title="lightning_app.storage.path.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lightning_app.storage.drive.Drive.html" class="btn btn-neutral float-right" title="Drive" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../storage.html" class="btn btn-neutral" title="lightning_app.storage" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (c) 2021-2022, Lightning-AI et al...
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Path</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/clipboard.min.js"></script>
+         <script src="../../_static/copybutton.js"></script>
+         <script src="../../_static/copybutton.js"></script>
+         <script>let toggleHintShow = 'Click to show';</script>
+         <script>let toggleHintHide = 'Click to hide';</script>
+         <script>let toggleOpenOnPrint = 'true';</script>
+         <script src="../../_static/togglebutton.js"></script>
+         <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script script type="text/javascript">
+  var collapsedSections = ['App Building Skills', 'Practical Examples', 'Common Workflows', 'Core API Reference', 'Addons API Reference', 'Glossary'];
+</script>
+
+
+
+  <div id="lightning-ai-footer"></div>
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. Read PyTorch Lightning's <a href="https://pytorchlightning.ai/privacy-policy">Privacy Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQBQ3CV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </body>
+</html>

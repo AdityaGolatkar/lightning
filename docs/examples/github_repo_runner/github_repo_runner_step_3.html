@@ -1,0 +1,499 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQBQ3CV');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="google-site-verification" content="okUst94cAlWSsUsGZTB4xSS4UKTtRV8Nu5XZ9pdd3Aw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Step 3: Implement the Flow to manage user requests &mdash; lightning 0.6.0dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.svg"/>
+  
+  
+  
+    <link rel="canonical" href="https://github.com/Lightning-AI/lightning/examples/github_repo_runner/github_repo_runner_step_3.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_paramlinks.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <!-- Google Analytics -->
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/UCity/UCity-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/UCity/UCity-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/UCity/UCity-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/Inconsolata/Inconsolata.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+</head>
+
+<div id="lightning-ai-header"></div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.6.0dev
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to ⚡ Lightning Apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/lightning_apps_intro.html">Lightning Apps in 15 minutes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">App Building Skills</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../levels/basic/index.html">Basic skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../levels/intermediate/index.html">Intermediate skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../levels/advanced/index.html">Advanced skills</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dag/dag.html">Develop a DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_server/file_server.html">Develop a File Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_repo_runner.html">Develop a Github Repo Script Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpo/hpo.html">Develop a HPO Sweeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_server_app/model_server_app.html">Develop a Model Server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_ui/index.html">Add a web user interface (UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_link.html">Add a web link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/arrange_tabs/index.html">Arrange app tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/build_lightning_app/index.html">Develop a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/build_lightning_component/index.html">Develop a Lightning Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/run_work_once.html">Cache Work run calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_work/compute.html">Customize your cloud compute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/extend_app.html">Extend an existing app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/build_lightning_component/publish_a_component.html">Publish a Lightning component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_server/index.html">Run a server within a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/run_app_on_cloud/index.html">Run an App on the cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/run_work_in_parallel.html">Run work in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/share_app.html">Share an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/share_files_between_components.html">Share files between components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_app/index.html">LightningApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_flow.html">LightningFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core_api/lightning_work/index.html">LightningWork</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Addons API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/components.html">lightning_app.components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/frontend.html">lightning_app.frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/runners.html">lightning_app.runners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/storage.html">lightning_app.storage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/app_tree.html">App Components Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/build_config/build_config.html">Build Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/dag.html">DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/event_loop.html">Event Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/environment_variables.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_ui/glossary_front_end.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/sharing_components.html">Sharing Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/scheduling.html">Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/storage/storage.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflows/add_web_ui/glossary_ui.html">UI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Step 3: Implement the Flow to manage user requests</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/examples/github_repo_runner/github_repo_runner_step_3.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <section id="step-3-implement-the-flow-to-manage-user-requests">
+<h1>Step 3: Implement the Flow to manage user requests<a class="headerlink" href="#step-3-implement-the-flow-to-manage-user-requests" title="Permalink to this headline">¶</a></h1>
+<p>In step 1 and 2, we have implemented the <code class="docutils literal notranslate"><span class="pre">GithubRepoRunner</span></code> and <code class="docutils literal notranslate"><span class="pre">PyTorchLightningGithubRepoRunner</span></code> components.</p>
+<p>Now, we are going to develop a component to dynamically handle user requests.
+Let’s dive in on how to develop the component with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="k">class</span> <span class="nc">TensorflowGithubRepoRunner</span><span class="p">(</span><span class="n">GithubRepoRunner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Left to the users to implement.&quot;&quot;&quot;</span>
+
+
+<span class="n">GITHUB_REPO_RUNNERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;PyTorch Lightning&quot;</span><span class="p">:</span> <span class="n">PyTorchLightningGithubRepoRunner</span><span class="p">,</span>
+    <span class="s2">&quot;Keras&quot;</span><span class="p">:</span> <span class="n">KerasGithubRepoRunner</span><span class="p">,</span>
+    <span class="s2">&quot;Tensorflow&quot;</span><span class="p">:</span> <span class="n">TensorflowGithubRepoRunner</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">Flow</span><span class="p">(</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># 1: Keep track of the requests within the state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requests</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># 2: Create a dictionary of components.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">Dict</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Iterate continuously over all requests</span>
+        <span class="k">for</span> <span class="n">request_id</span><span class="p">,</span> <span class="n">request</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">requests</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle_request</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_handle_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="c1"># 1: Create a name and find selected framework</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;w_</span><span class="si">{</span><span class="n">request_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">ml_framework</span> <span class="o">=</span> <span class="n">request</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;ml_framework&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 2: If the component hasn&#39;t been created yet, create it.</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="p">:</span>
+            <span class="n">work_cls</span> <span class="o">=</span> <span class="n">GITHUB_REPO_RUNNERS</span><span class="p">[</span><span class="n">ml_framework</span><span class="p">]</span>
+            <span class="n">work</span> <span class="o">=</span> <span class="n">work_cls</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">request</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">request</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">work</span>
+
+        <span class="c1"># 3: Run the component</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+        <span class="c1"># 4: Once the component has finished,</span>
+        <span class="c1"># add metadata to the original request for the UI.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">best_model_path</span><span class="p">:</span>
+            <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">requests</span><span class="p">[</span><span class="n">request_id</span><span class="p">]</span>
+            <span class="n">request</span><span class="p">[</span><span class="s2">&quot;best_model_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">best_model_score</span>
+            <span class="n">request</span><span class="p">[</span><span class="s2">&quot;best_model_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">best_model_path</span>
+
+    <span class="k">def</span> <span class="nf">configure_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Create a StreamLit UI for the user to run his Github Repo.</span>
+        <span class="k">return</span> <span class="n">StreamlitFrontend</span><span class="p">(</span><span class="n">render_fn</span><span class="o">=</span><span class="n">render_fn</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="display-card-container">
+    <div class="row"><p><div class="col-md-4">
+    <a href='github_repo_runner_step_1.html'>
+    <div class="display-card display-card-hover" style='height:180px'>
+            <div class=""></div>
+            <h3>Step 1: Implement the GithubRepoRunner Component</h3>
+            <p class="body-paragraph">Clone and execute script from a GitHub Repo.</p>
+    </div>
+    </a>
+    <div class='card-tag'>Intermediate</div>
+</div></p>
+<p><div class="col-md-4">
+    <a href='github_repo_runner_step_2.html'>
+    <div class="display-card display-card-hover" style='height:180px'>
+            <div class=""></div>
+            <h3>Step 2: Implement the PyTorch Lightning GithubRepoRunner Component</h3>
+            <p class="body-paragraph">Automate PyTorch Lightning execution</p>
+    </div>
+    </a>
+    <div class='card-tag'>Advanced</div>
+</div></p>
+<p><div class="col-md-4">
+    <a href='github_repo_runner_step_4.html'>
+    <div class="display-card display-card-hover" style='height:180px'>
+            <div class=""></div>
+            <h3>Step 4: Implement the UI with StreamLit</h3>
+            <p class="body-paragraph">Several pages application</p>
+    </div>
+    </a>
+    <div class='card-tag'>Intermediate</div>
+</div></p>
+<p><div class="col-md-4">
+    <a href='github_repo_runner_step_5.html'>
+    <div class="display-card display-card-hover" style='height:180px'>
+            <div class=""></div>
+            <h3>Step 5: Put it all together</h3>
+            <p class="body-paragraph"></p>
+    </div>
+    </a>
+    <div class='card-tag'>Intermediate</div>
+</div></p>
+    </div>
+</div></section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (c) 2021-2022, Lightning-AI et al...
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Step 3: Implement the Flow to manage user requests</a></li>
+<li><a class="reference internal" href="#tutorial">Tutorial</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/clipboard.min.js"></script>
+         <script src="../../_static/copybutton.js"></script>
+         <script src="../../_static/copybutton.js"></script>
+         <script>let toggleHintShow = 'Click to show';</script>
+         <script>let toggleHintHide = 'Click to hide';</script>
+         <script>let toggleOpenOnPrint = 'true';</script>
+         <script src="../../_static/togglebutton.js"></script>
+         <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script script type="text/javascript">
+  var collapsedSections = ['App Building Skills', 'Practical Examples', 'Common Workflows', 'Core API Reference', 'Addons API Reference', 'Glossary'];
+</script>
+
+
+
+  <div id="lightning-ai-footer"></div>
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. Read PyTorch Lightning's <a href="https://pytorchlightning.ai/privacy-policy">Privacy Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQBQ3CV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </body>
+</html>

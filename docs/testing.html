@@ -1,0 +1,526 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQBQ3CV');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="google-site-verification" content="okUst94cAlWSsUsGZTB4xSS4UKTtRV8Nu5XZ9pdd3Aw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Productionize your Apps &mdash; lightning 0.6.0dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.svg"/>
+  
+  
+  
+    <link rel="canonical" href="https://github.com/Lightning-AI/lightning/testing.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/main.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_paramlinks.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <!-- Google Analytics -->
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/UCity/UCity-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/UCity/UCity-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/UCity/UCity-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/Inconsolata/Inconsolata.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+</head>
+
+<div id="lightning-ai-header"></div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.6.0dev
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Welcome to ⚡ Lightning Apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started/lightning_apps_intro.html">Lightning Apps in 15 minutes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">App Building Skills</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="levels/basic/index.html">Basic skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="levels/intermediate/index.html">Intermediate skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="levels/advanced/index.html">Advanced skills</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/dag/dag.html">Develop a DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/file_server/file_server.html">Develop a File Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/github_repo_runner/github_repo_runner.html">Develop a Github Repo Script Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/hpo/hpo.html">Develop a HPO Sweeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/model_server_app/model_server_app.html">Develop a Model Server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_ui/index.html">Add a web user interface (UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_link.html">Add a web link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/arrange_tabs/index.html">Arrange app tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/build_lightning_app/index.html">Develop a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/build_lightning_component/index.html">Develop a Lightning Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/run_work_once.html">Cache Work run calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_work/compute.html">Customize your cloud compute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/extend_app.html">Extend an existing app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/build_lightning_component/publish_a_component.html">Publish a Lightning component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_server/index.html">Run a server within a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/run_app_on_cloud/index.html">Run an App on the cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/run_work_in_parallel.html">Run work in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/share_app.html">Share an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/share_files_between_components.html">Share files between components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_app/index.html">LightningApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_flow.html">LightningFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_work/index.html">LightningWork</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Addons API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/components.html">lightning_app.components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/frontend.html">lightning_app.frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/runners.html">lightning_app.runners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/storage.html">lightning_app.storage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary/app_tree.html">App Components Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/build_config/build_config.html">Build Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/dag.html">DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/event_loop.html">Event Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/environment_variables.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_ui/glossary_front_end.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/sharing_components.html">Sharing Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/scheduling.html">Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/storage/storage.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_ui/glossary_ui.html">UI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Productionize your Apps</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="_sources/testing.rst.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <section id="productionize-your-apps">
+<span id="testing"></span><h1>Productionize your Apps<a class="headerlink" href="#productionize-your-apps" title="Permalink to this headline">¶</a></h1>
+<p>TODO: Cleanup</p>
+<p>At the core of our system is an integration testing framework that will allow for a first-class experience creating integration tests for Lightning Apps. This document will explain how we can create a lightning app test, how we can execute it, and where to find more information.</p>
+<hr class="docutils" />
+<section id="philosophy">
+<h2>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h2>
+<p>Testing a Lightning app is unique. It is a superset of an application that converges machine learning, API development, and UI development. With that in mind, there are several philosophies (or “best practices”) that you should adhere to:</p>
+<ol class="arabic simple">
+<li><p><strong>Control your app state</strong> - With integration and end to end tests, you have the capabilities of controlling your app’s state through dependency injection. Use it!</p></li>
+<li><p><strong>Integration focuses on the work, End to End focuses on the app</strong> - When writing tests, think of the depth and breath of what you are writing. Write many integration tests since they are relatively cheap, while keeping the end to end tests for holistic app testing.</p></li>
+<li><p><strong>Don’t overthink it</strong> - What needs to be tested? What is the order of risk? These are the questions you should build with before writing your first line of code. Writing tests for the sake of writing tests is an exercise in futility. Write meaningful, impactful tests.</p></li>
+<li><p><strong>Test Isolation</strong> - Write your tests in an isolated manner. No two tests should ever depend on each other.</p></li>
+<li><p><strong>Use your framework</strong> - Testing apps should be framework agnostic.</p></li>
+<li><p><strong>Have fun!</strong> - At the heart of testing is experimentation. Like any experiment, tests begin with a hypothesis of workability, but you can extend that to be more inclusive. Ask the question, write the test to answer your question, and make sure you have fun while doing it.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="anatomy-of-a-lightning-integration-test">
+<h2>Anatomy of a Lightning integration test<a class="headerlink" href="#anatomy-of-a-lightning-integration-test" title="Permalink to this headline">¶</a></h2>
+<p>The following is a PyTest example of an integration test using the <code class="docutils literal notranslate"><span class="pre">lightning_app.testing.testing</span></code> module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">lightning_app</span> <span class="kn">import</span> <span class="n">_PROJECT_ROOT</span>
+<span class="kn">from</span> <span class="nn">lightning_app.testing.testing</span> <span class="kn">import</span> <span class="n">application_testing</span><span class="p">,</span> <span class="n">TestLightningApp</span>
+<span class="kn">from</span> <span class="nn">lightning_app.utilities.enum</span> <span class="kn">import</span> <span class="n">AppStage</span>
+
+
+<span class="k">class</span> <span class="nc">TestLightningAppInt</span><span class="p">(</span><span class="n">TestLightningApp</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;V0 App End&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">=</span> <span class="n">AppStage</span><span class="o">.</span><span class="n">STOPPING</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">run_once</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">test_v0_app_example</span><span class="p">():</span>
+    <span class="n">command_line</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_PROJECT_ROOT</span><span class="p">,</span> <span class="s2">&quot;examples/app_v0/app.py&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;--blocking&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--multiprocess&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--open-ui&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">application_testing</span><span class="p">(</span><span class="n">TestLightningAppInt</span><span class="p">,</span> <span class="n">command_line</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s2">&quot;V0 App End&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout_bytes</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="setting-up-the-app">
+<h3>Setting up the app<a class="headerlink" href="#setting-up-the-app" title="Permalink to this headline">¶</a></h3>
+<p>Lightning apps are unique in that they represent a full stack model for your machine learning application. To be clear, the integration tests are <em>NOT</em> going to touch the UI flow. Instead we inject your application with helper methods that, when executed, can assist in validating your application.</p>
+<p>To get started, you simply need to import the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_app.testing.testing</span> <span class="kn">import</span> <span class="n">application_testing</span><span class="p">,</span> <span class="n">TestLightningApp</span>
+</pre></div>
+</div>
+<p>We will discuss <code class="docutils literal notranslate"><span class="pre">application_testing</span></code> in a bit, but first let’s review the structure of <code class="docutils literal notranslate"><span class="pre">TestLightningApp</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="testlightningapp">
+<h3>TestLightningApp<a class="headerlink" href="#testlightningapp" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">lightning_app.testing.testing.TestingLightningApp</span></code> class is available to use for provisioning and setting up your testing needs. Note that you do not need this class to move forward with testing. Any application that inherits <code class="docutils literal notranslate"><span class="pre">LightningApp</span></code> should suffice as long as you override the correct methods. Reviewing the TestLightnigApp we see some overrides that are already there. Please revuew the class for more information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestLightningAppInt</span><span class="p">(</span><span class="n">TestLightningApp</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;V0 App End&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">=</span> <span class="n">AppStage</span><span class="o">.</span><span class="n">STOPPING</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">run_once</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We create a test class overriding the <code class="docutils literal notranslate"><span class="pre">run_once</span></code> function. This function helps control the flow of your application and is ran first. In this example we are calling <code class="docutils literal notranslate"><span class="pre">self.root.counter</span></code> and checking if the job has executed once. If so, we want to print out <code class="docutils literal notranslate"><span class="pre">V0</span> <span class="pre">App</span> <span class="pre">End</span></code> and set the <code class="docutils literal notranslate"><span class="pre">self.stage</span></code> to <code class="docutils literal notranslate"><span class="pre">AppStage.STOPPING</span></code>. This is how we control the flow through state. Your situation might be different, so experiment and see what you can do!</p>
+<p>Besides <code class="docutils literal notranslate"><span class="pre">run_once</span></code> there are a few other overrides available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">on_before_run_once</span></code> - This runs before your <code class="docutils literal notranslate"><span class="pre">run_once</span></code> function kicks off. You can set up your application pre-conditions here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on_after_run_once</span></code> - Similar to <code class="docutils literal notranslate"><span class="pre">on_before_run_once</span></code> but after the <code class="docutils literal notranslate"><span class="pre">run_once</span></code> method is called.</p></li>
+</ul>
+<p>These methods will skew your tests, so use them when needed.</p>
+</section>
+<hr class="docutils" />
+<section id="the-test">
+<h3>The Test<a class="headerlink" href="#the-test" title="Permalink to this headline">¶</a></h3>
+<p>We provide <code class="docutils literal notranslate"><span class="pre">application_testing</span></code> as a helper funtion to get your application up and running for testing. It uses <code class="docutils literal notranslate"><span class="pre">click</span></code>‘s invocation tooling underneath.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command_line</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_PROJECT_ROOT</span><span class="p">,</span> <span class="s2">&quot;examples/app_v0/app.py&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;--blocking&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--multiprocess&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--open-ui&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>First in the list for <code class="docutils literal notranslate"><span class="pre">command_line</span></code> is the location of your script. It is an external file. In this example we have <code class="docutils literal notranslate"><span class="pre">_PROJECT_ROOT</span></code> but this is <em>not</em> a helper constant for you to utilize. You will need to provide the location yourself.</p>
+<p>Next there are a couple of options you can leverage:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blocking</span></code> - Blocking is an app status that says “Do not run until I click run in the UI”. For our integration test, since we are not using the UI, we are setting this to “False”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiprocess/singleprocess</span></code> - This is the runtime your app is expected to run under.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">open-ui</span></code> - We set this to false since this is the routine that opens a browser for your local execution.</p></li>
+</ul>
+<p>Once you have your commandline ready, you will then be able to kick off the test and gather results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">application_testing</span><span class="p">(</span><span class="n">TestLightningAppInt</span><span class="p">,</span> <span class="n">command_line</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As mentioned earlier, <code class="docutils literal notranslate"><span class="pre">application_testing</span></code> is a helper method that allows you to inject your TestLightningApp class (with overrides) and the commandline flags. Once the process is done it returns the results back for parsing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="s2">&quot;V0 App End&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout_bytes</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Since we injected “V0 App End” to the end of our test flow. The state was changed to <code class="docutils literal notranslate"><span class="pre">AppStatus.STOPPING</span></code> which means the process is done. Finally, we check the result’s exit code to make sure that we did not throw an error during execution.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="end-to-end">
+<h2>End to End<a class="headerlink" href="#end-to-end" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (c) 2021-2022, Lightning-AI et al...
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Productionize your Apps</a><ul>
+<li><a class="reference internal" href="#philosophy">Philosophy</a></li>
+<li><a class="reference internal" href="#anatomy-of-a-lightning-integration-test">Anatomy of a Lightning integration test</a><ul>
+<li><a class="reference internal" href="#setting-up-the-app">Setting up the app</a></li>
+<li><a class="reference internal" href="#testlightningapp">TestLightningApp</a></li>
+<li><a class="reference internal" href="#the-test">The Test</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#end-to-end">End to End</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/clipboard.min.js"></script>
+         <script src="_static/copybutton.js"></script>
+         <script src="_static/copybutton.js"></script>
+         <script>let toggleHintShow = 'Click to show';</script>
+         <script>let toggleHintHide = 'Click to hide';</script>
+         <script>let toggleOpenOnPrint = 'true';</script>
+         <script src="_static/togglebutton.js"></script>
+         <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+     
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script script type="text/javascript">
+  var collapsedSections = ['App Building Skills', 'Practical Examples', 'Common Workflows', 'Core API Reference', 'Addons API Reference', 'Glossary'];
+</script>
+
+
+
+  <div id="lightning-ai-footer"></div>
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. Read PyTorch Lightning's <a href="https://pytorchlightning.ai/privacy-policy">Privacy Policy</a>.</p>
+    <img class="close-button" src="_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQBQ3CV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </body>
+</html>

@@ -1,0 +1,13 @@
+﻿:orphan:
+
+.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: lightning_app.components.serve.serve
+
+
+ModelInferenceAPI
+=================
+
+.. autoclass:: ModelInferenceAPI
+    :members:
+    :noindex:

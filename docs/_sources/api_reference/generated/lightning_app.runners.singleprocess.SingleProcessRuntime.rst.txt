@@ -1,0 +1,10 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: lightning_app.runners.singleprocess
+
+
+SingleProcessRuntime
+====================
+
+.. autoclass:: SingleProcessRuntime
+    :members:

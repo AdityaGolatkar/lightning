@@ -1,0 +1,743 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQBQ3CV');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="google-site-verification" content="okUst94cAlWSsUsGZTB4xSS4UKTtRV8Nu5XZ9pdd3Aw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Basics &mdash; lightning 0.6.0dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.svg"/>
+  
+  
+  
+    <link rel="canonical" href="https://github.com/Lightning-AI/lightning/basics.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/main.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_paramlinks.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <!-- Google Analytics -->
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/UCity/UCity-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/UCity/UCity-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/UCity/UCity-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/Inconsolata/Inconsolata.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+</head>
+
+<div id="lightning-ai-header"></div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.6.0dev
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Welcome to ⚡ Lightning Apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started/lightning_apps_intro.html">Lightning Apps in 15 minutes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">App Building Skills</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="levels/basic/index.html">Basic skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="levels/intermediate/index.html">Intermediate skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="levels/advanced/index.html">Advanced skills</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/dag/dag.html">Develop a DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/file_server/file_server.html">Develop a File Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/github_repo_runner/github_repo_runner.html">Develop a Github Repo Script Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/hpo/hpo.html">Develop a HPO Sweeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/model_server_app/model_server_app.html">Develop a Model Server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_ui/index.html">Add a web user interface (UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_link.html">Add a web link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/arrange_tabs/index.html">Arrange app tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/build_lightning_app/index.html">Develop a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/build_lightning_component/index.html">Develop a Lightning Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/run_work_once.html">Cache Work run calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_work/compute.html">Customize your cloud compute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/extend_app.html">Extend an existing app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/build_lightning_component/publish_a_component.html">Publish a Lightning component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_server/index.html">Run a server within a Lightning App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/run_app_on_cloud/index.html">Run an App on the cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/run_work_in_parallel.html">Run work in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/share_app.html">Share an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/share_files_between_components.html">Share files between components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_app/index.html">LightningApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_flow.html">LightningFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api/lightning_work/index.html">LightningWork</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Addons API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/components.html">lightning_app.components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/frontend.html">lightning_app.frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/runners.html">lightning_app.runners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference/storage.html">lightning_app.storage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary/app_tree.html">App Components Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/build_config/build_config.html">Build Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/dag.html">DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/event_loop.html">Event Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/environment_variables.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_ui/glossary_front_end.html">Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/sharing_components.html">Sharing Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/scheduling.html">Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/storage/storage.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflows/add_web_ui/glossary_ui.html">UI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Basics</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="_sources/basics.rst.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <section id="basics">
+<span id="id1"></span><h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
+<p>In this guide, we’ll cover the basic terminology associated with the Lightning framework.</p>
+<hr class="docutils" />
+<section id="lightning-app">
+<h2>Lightning App<a class="headerlink" href="#lightning-app" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="api_reference/api/lightning_app.core.LightningApp.html#lightning_app.core.LightningApp" title="lightning_app.core.app.LightningApp"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningApp</span></code></a> runs a tree of one or more components that interact to create end-to-end applications. There are two kinds of components: <a class="reference internal" href="core_api/lightning_flow.html#lightning_app.core.flow.LightningFlow" title="lightning_app.core.flow.LightningFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningFlow</span></code></a> and <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a>. This modular design enables you to reuse components created by other users.</p>
+<hr class="docutils" />
+<section id="lightning-work">
+<h3>Lightning Work<a class="headerlink" href="#lightning-work" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a> component is a building block optimized for long-running jobs or integrating third-party services. LightningWork can be used for training large models, downloading a dataset, or any long-lasting operation.</p>
+</section>
+<hr class="docutils" />
+<section id="lightning-flow">
+<h3>Lightning Flow<a class="headerlink" href="#lightning-flow" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="core_api/lightning_flow.html#lightning_app.core.flow.LightningFlow" title="lightning_app.core.flow.LightningFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningFlow</span></code></a> component coordinates long-running tasks <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a> and runs its children <a class="reference internal" href="core_api/lightning_flow.html#lightning_app.core.flow.LightningFlow" title="lightning_app.core.flow.LightningFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningFlow</span></code></a> components.</p>
+</section>
+<hr class="docutils" />
+<section id="lightning-app-tree">
+<h3>Lightning App Tree<a class="headerlink" href="#lightning-app-tree" title="Permalink to this headline">¶</a></h3>
+<p>Components can be nested to form component trees where the LightningFlows are its branches and LightningWorks are its leaves.</p>
+<p>Here’s a basic application with four flows and two works:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+<span class="kn">from</span> <span class="nn">lightning.app.testing.helpers</span> <span class="kn">import</span> <span class="n">EmptyFlow</span><span class="p">,</span> <span class="n">EmptyWork</span>
+
+
+<span class="k">class</span> <span class="nc">FlowB</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_d</span> <span class="o">=</span> <span class="n">EmptyFlow</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work_b</span> <span class="o">=</span> <span class="n">EmptyWork</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+
+<span class="k">class</span> <span class="nc">FlowA</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_b</span> <span class="o">=</span> <span class="n">FlowB</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_c</span> <span class="o">=</span> <span class="n">EmptyFlow</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work_a</span> <span class="o">=</span> <span class="n">EmptyWork</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningApp</span><span class="p">(</span><span class="n">FlowA</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>And here’s its associated tree structure:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://pl-flash-data.s3.amazonaws.com/assets_lightning/tree.gif"><img alt="Basic App Components" src="https://pl-flash-data.s3.amazonaws.com/assets_lightning/tree.gif" style="width: 100%;" /></a>
+</figure>
+<p>A Lightning App runs all flows into a single process. Its flows coordinate the execution of the works each running in their own independent processes.</p>
+</section>
+<hr class="docutils" />
+<section id="lightning-distributed-event-loop">
+<h3>Lightning Distributed Event Loop<a class="headerlink" href="#lightning-distributed-event-loop" title="Permalink to this headline">¶</a></h3>
+<p>Drawing inspiration from modern web frameworks like <a class="reference external" href="https://reactjs.org/">React.js</a>, the Lightning app runs all flows in an <strong>event loop</strong> (forever), which is triggered every 0.1 seconds after collecting any works’ state change.</p>
+<figure class="align-default">
+<img alt="https://pl-flash-data.s3.amazonaws.com/assets_lightning/lightning_loop.gif" src="https://pl-flash-data.s3.amazonaws.com/assets_lightning/lightning_loop.gif" />
+</figure>
+<p>When running an app in the cloud, the <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a> run on different machines. Lightning communicates any <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a> state changes to the <strong>event loop</strong> which re-executes the flow with the newly-collected works’ state.</p>
+</section>
+<hr class="docutils" />
+<section id="lightning-app-state">
+<h3>Lightning App State<a class="headerlink" href="#lightning-app-state" title="Permalink to this headline">¶</a></h3>
+<p>By design, each component is stateful and its state is composed of all its attributes. The <strong>Lightning App State</strong> is the collection of all its components state.</p>
+<p>With this mechanism, any component can <strong>react</strong> to any other component <strong>state changes</strong>, simply by relying on its attributes within the flow.</p>
+<p>For example, here we define two flow components, <strong>RootFlow</strong> and <strong>ChildFlow</strong>, where the child flow prints and increments a counter indefinitely and gets reflected in <strong>RootFlow</strong> state.</p>
+<p>You can easily check the state of your entire app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+<span class="kn">from</span> <span class="nn">lightning.app.utilities.app_helpers</span> <span class="kn">import</span> <span class="n">pretty_state</span>
+
+
+<span class="k">class</span> <span class="nc">Work</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningWork</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cache_calls</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Attributes are registered automatically in the state.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Incrementing an attribute gets reflected in the `Flow` state.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">Flow</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">Work</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">has_started</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;State: </span><span class="si">{</span><span class="n">pretty_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningApp</span><span class="p">(</span><span class="n">Flow</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Here’s the entire tree structure associated with your app:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://pl-flash-data.s3.amazonaws.com/assets_lightning/parent_child.png"><img alt="Parent Child Components" src="https://pl-flash-data.s3.amazonaws.com/assets_lightning/parent_child.png" style="width: 100%;" /></a>
+</figure>
+<p>And here’s the output you get when running the above application using <strong>Lightning CLI</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lightning run app docs/source-app/code_samples/quickstart/app_01.py
+<span class="go">  INFO: Your app has started. View it in your browser: http://127.0.0.1:7501/view</span>
+<span class="go">  State: {&#39;works&#39;: {&#39;w_1&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 1}}, &#39;w_2&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 0}}}}</span>
+
+<span class="go">  State: {&#39;works&#39;: {&#39;w_1&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 3}}, &#39;w_2&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 1}}}}</span>
+
+<span class="go">  State: {&#39;works&#39;: {&#39;w_1&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 4}}, &#39;w_2&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 1}}}}</span>
+
+<span class="go">  State: {&#39;works&#39;: {&#39;w_1&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 5}}, &#39;w_2&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 2}}}}</span>
+
+<span class="go">  State: {&#39;works&#39;: {&#39;w_1&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 6}}, &#39;w_2&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 2}}}}</span>
+
+<span class="go">  State: {&#39;works&#39;: {&#39;w_1&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 7}}, &#39;w_2&#39;: {&#39;vars&#39;: {&#39;counter&#39;: 3}}}}</span>
+<span class="go">  ...</span>
+</pre></div>
+</div>
+<p>This app will count forever because the <strong>lightning event loop</strong> indefinitely calls the root flow run method.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="controlling-the-execution-flow">
+<h2>Controlling the Execution Flow<a class="headerlink" href="#controlling-the-execution-flow" title="Permalink to this headline">¶</a></h2>
+<section id="lightningwork-to-cache-or-not-to-cache-calls">
+<h3>LightningWork: To Cache or Not to Cache Calls<a class="headerlink" href="#lightningwork-to-cache-or-not-to-cache-calls" title="Permalink to this headline">¶</a></h3>
+<p>With Lightning, you can control how to run your components.</p>
+<p>By default, the <a class="reference internal" href="core_api/lightning_flow.html#lightning_app.core.flow.LightningFlow" title="lightning_app.core.flow.LightningFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningFlow</span></code></a> is executed infinitely by the <strong>Lightning Infinite Loop</strong> and the <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a> does not run in <strong>parallel</strong>,
+meaning the <strong>Lightning Infinite Loop</strong> (a.k.a the flow) waits until that long-running work is completed to continue.</p>
+<p>Similar to <a class="reference external" href="https://reactjs.org/docs/components-and-props.html">React.js Components and Props</a>, the <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a>
+component accepts arbitrary inputs (the “props”) to its <strong>run</strong> method and by default runs <strong>once</strong> for each unique input provided.</p>
+<p>Here’s an example of this behavior:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+
+
+<span class="k">class</span> <span class="nc">ExampleWork</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningWork</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I received the following props: args: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2"> kwargs: </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">work</span> <span class="o">=</span> <span class="n">ExampleWork</span><span class="p">()</span>
+<span class="hll"><span class="n">work</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span>
+<span class="c1"># Providing the same value. This won&#39;t run as already cached.</span>
+<span class="n">work</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">work</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">work</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">work</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Changing the provided value. This isn&#39;t cached and will run again.</span>
+<span class="hll"><span class="n">work</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>And you should see the following by running the code above:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python example.py
+<span class="go">  INFO: Your app has started. View it in your browser: http://127.0.0.1:7501/view</span>
+<span class="gp">  # </span>After you have clicked <span class="sb">`</span>run<span class="sb">`</span> on the UI.
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 1}</span>
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 10}</span>
+</pre></div>
+</div>
+<p>As you can see, the intermediate run didn’t execute as already cached.</p>
+<p>To disable this behavior, set <code class="docutils literal notranslate"><span class="pre">cache_calls=False</span></code> to make any LightningWork run infinitely.</p>
+<div class="highlight-udiff notranslate"><div class="highlight"><pre><span></span><span class="gd">--- /home/runner/work/lightning/lightning/docs/source-app/code_samples/basics/0.py</span><span class="w"></span>
+<span class="gi">+++ /home/runner/work/lightning/lightning/docs/source-app/code_samples/basics/1.py</span><span class="w"></span>
+<span class="gu">@@ -2,6 +2,9 @@</span><span class="w"></span>
+<span class="w"> </span>
+<span class="w"> </span>
+<span class="w"> </span>class ExampleWork(L.LightningWork):<span class="w"></span>
+<span class="gi">+    def __init__(self):</span><span class="w"></span>
+<span class="gi">+        super().__init__(cache_calls=False)</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>    def run(self, *args, **kwargs):<span class="w"></span>
+<span class="w"> </span>        print(f&quot;I received the following props: args: {args} kwargs: {kwargs}&quot;)<span class="w"></span>
+<span class="w"> </span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python example.py
+<span class="go">  INFO: Your app has started. View it in your browser: http://127.0.0.1:7501/view</span>
+<span class="gp">  # </span>After you have clicked <span class="sb">`</span>run<span class="sb">`</span> on the UI.
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 1}</span>
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 1}</span>
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 1}</span>
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 1}</span>
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 1}</span>
+<span class="go">  I received the following props: args: () kwargs: {&#39;value&#39;: 10}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Passing a sequence of different props to the work run method queues their execution. We recommend avoiding this behavior as it can be hard to debug. Instead, wait for the previous run to execute.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lightningwork-parallel-vs-non-parallel">
+<h3>LightningWork: Parallel vs Non Parallel<a class="headerlink" href="#lightningwork-parallel-vs-non-parallel" title="Permalink to this headline">¶</a></h3>
+<p>The LightningWork component is made for long-running jobs.</p>
+<p>As an example, let’s create a long-running <strong>LightningWork</strong> component that will take 1 hour to do its “work”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+
+
+<span class="c1"># This work takes an hour to run</span>
+<span class="k">class</span> <span class="nc">HourLongWork</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningWork</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parallel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3600</span><span class="p">):</span>
+<span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">3600</span>  <span class="c1"># Reporting my progress to the Flow.</span>
+</span>            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">RootFlow</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child_work</span><span class="p">:</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningWork</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_work</span> <span class="o">=</span> <span class="n">child_work</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># prints the progress from the child work</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">child_work</span><span class="o">.</span><span class="n">progress</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_work</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">child_work</span><span class="o">.</span><span class="n">counter</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 hour later!&quot;</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningApp</span><span class="p">(</span><span class="n">RootFlow</span><span class="p">(</span><span class="n">HourLongWork</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>Here’s the output you get when running the above application using <strong>Lightning CLI</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lightning run app docs/source-app/code_samples/quickstart/app_02.py
+<span class="go">  INFO: Your app has started. View it in your browser: http://127.0.0.1:7501/view</span>
+<span class="gp">  # </span>After you have clicked <span class="sb">`</span>run<span class="sb">`</span> on the UI.
+<span class="go">  0.0 0.0</span>
+<span class="go">  ...</span>
+<span class="go">  0.0003 0.0003</span>
+<span class="go">  ...</span>
+<span class="go">  1.0 1.0</span>
+<span class="go">  ...</span>
+<span class="go">  1 hour later!</span>
+<span class="go">  1.0 1.0</span>
+<span class="go">  1 hour later!</span>
+<span class="go">  1.0 1.0</span>
+<span class="go">  1 hour later!</span>
+<span class="go">  ...</span>
+</pre></div>
+</div>
+<p>The child work runs only once, hence why the progress counter stops increasing once the work is completed.</p>
+<p>This is useful for monitoring the progress of a long-running operation, like training a big model.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Lightning Infinite Loop runs multiple cycles per second.
+It is good practice to keep the loop running fast, so that your application stays responsive,
+especially when it contains user-interface components.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="multiple-works">
+<h2>Multiple works<a class="headerlink" href="#multiple-works" title="Permalink to this headline">¶</a></h2>
+<p>In practical use cases, you might want to execute multiple long-running works in parallel.</p>
+<p>To enable this behavior, set <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code> in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of
+your <a class="reference internal" href="api_reference/api/lightning_app.core.LightningWork.html#lightning_app.core.LightningWork" title="lightning_app.core.work.LightningWork"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightningWork</span></code></a>.</p>
+<p>Here’s an example of the interaction between parallel and non-parallel behaviors:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://pl-flash-data.s3.amazonaws.com/assets_lightning/blocking_non_blocking.gif"><img alt="mnist GPU bar" src="https://pl-flash-data.s3.amazonaws.com/assets_lightning/blocking_non_blocking.gif" style="width: 100%;" /></a>
+</figure>
+<p>Below, we reuse the <strong>HourLongWork</strong> work defined in the previous example, but modify the <strong>RootFlow</strong>
+to run two <strong>HourLongWork</strong> works in a parallel way.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docs.quickstart.app_02</span> <span class="kn">import</span> <span class="n">HourLongWork</span>
+
+<span class="kn">import</span> <span class="nn">lightning</span> <span class="k">as</span> <span class="nn">L</span>
+
+
+<span class="k">class</span> <span class="nc">RootFlow</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">LightningFlow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child_work_1</span><span class="p">:</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningWork</span><span class="p">,</span> <span class="n">child_work_2</span><span class="p">:</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningWork</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_work_1</span> <span class="o">=</span> <span class="n">child_work_1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_work_2</span> <span class="o">=</span> <span class="n">child_work_2</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">child_work_1</span><span class="o">.</span><span class="n">progress</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">child_work_2</span><span class="o">.</span><span class="n">progress</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_work_1</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_work_2</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">child_work_1</span><span class="o">.</span><span class="n">progress</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 hour later `child_work_1` started!&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">child_work_2</span><span class="o">.</span><span class="n">progress</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 hour later `child_work_2` started!&quot;</span><span class="p">)</span>
+
+<span class="hll">
+</span><span class="n">app</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">LightningApp</span><span class="p">(</span><span class="n">RootFlow</span><span class="p">(</span><span class="n">HourLongWork</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">HourLongWork</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>Above, both <code class="docutils literal notranslate"><span class="pre">child_work_1</span></code> and <code class="docutils literal notranslate"><span class="pre">child_work_2</span></code> are long-running works that are executed
+asynchronously in parallel.</p>
+<p>When running the above app, we see the following logs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lightning run app docs/source-app/code_samples/quickstart/app/app_0.py
+<span class="go">  INFO: Your app has started. View it in your browser: http://127.0.0.1:7501/view</span>
+<span class="gp">  # </span>After you have clicked <span class="sb">`</span>run<span class="sb">`</span> on the UI.
+<span class="go">  0.0, 0.0</span>
+<span class="go">  ...</span>
+<span class="go">  0.0003, 0.0003</span>
+<span class="go">  ...</span>
+<span class="go">  1.0, 1.0</span>
+<span class="go">  ...</span>
+<span class="go">  1 hour later `child_work_1` started!</span>
+<span class="go">  1 hour later `child_work_2` started!</span>
+<span class="go">  0.0, 0.0</span>
+<span class="go">  ...</span>
+<span class="go">  0.0003, 0.0003</span>
+<span class="go">  ...</span>
+<span class="go">  1.0, 1.0</span>
+<span class="go">  1 hour later `child_work_1` started!</span>
+<span class="go">  1 hour later `child_work_2` started!</span>
+<span class="go">  ...</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>To keep learning about Lightning, build a <a class="reference internal" href="ui_and_frontends.html#ui-and-frontends"><span class="std std-ref">UI and Frontends</span></a>.</p>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (c) 2021-2022, Lightning-AI et al...
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Basics</a><ul>
+<li><a class="reference internal" href="#lightning-app">Lightning App</a><ul>
+<li><a class="reference internal" href="#lightning-work">Lightning Work</a></li>
+<li><a class="reference internal" href="#lightning-flow">Lightning Flow</a></li>
+<li><a class="reference internal" href="#lightning-app-tree">Lightning App Tree</a></li>
+<li><a class="reference internal" href="#lightning-distributed-event-loop">Lightning Distributed Event Loop</a></li>
+<li><a class="reference internal" href="#lightning-app-state">Lightning App State</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#controlling-the-execution-flow">Controlling the Execution Flow</a><ul>
+<li><a class="reference internal" href="#lightningwork-to-cache-or-not-to-cache-calls">LightningWork: To Cache or Not to Cache Calls</a></li>
+<li><a class="reference internal" href="#lightningwork-parallel-vs-non-parallel">LightningWork: Parallel vs Non Parallel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multiple-works">Multiple works</a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/clipboard.min.js"></script>
+         <script src="_static/copybutton.js"></script>
+         <script src="_static/copybutton.js"></script>
+         <script>let toggleHintShow = 'Click to show';</script>
+         <script>let toggleHintHide = 'Click to hide';</script>
+         <script>let toggleOpenOnPrint = 'true';</script>
+         <script src="_static/togglebutton.js"></script>
+         <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+     
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script script type="text/javascript">
+  var collapsedSections = ['App Building Skills', 'Practical Examples', 'Common Workflows', 'Core API Reference', 'Addons API Reference', 'Glossary'];
+</script>
+
+
+
+  <div id="lightning-ai-footer"></div>
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. Read PyTorch Lightning's <a href="https://pytorchlightning.ai/privacy-policy">Privacy Policy</a>.</p>
+    <img class="close-button" src="_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQBQ3CV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </body>
+</html>
